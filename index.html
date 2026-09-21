@@ -128,9 +128,24 @@
             width: 100%;
             height: 3px;
             background: linear-gradient(90deg, rgba(234, 179, 8, 0.1), rgba(234, 179, 8, 1), rgba(234, 179, 8, 0.1));
-            margin-bottom: 35px;
+            margin-bottom: 25px;
             box-shadow: 0 0 12px rgba(234, 179, 8, 0.5);
             border-radius: 2px;
+        }
+
+        /* Narasi Peringatan Diperbarui */
+        .warning-narrative {
+            font-family: 'Poppins', sans-serif;
+            font-size: 16px;
+            font-weight: 700;
+            color: #f43f5e;
+            text-align: center;
+            background: rgba(244, 63, 94, 0.1);
+            border: 1px dashed rgba(244, 63, 94, 0.4);
+            padding: 14px 20px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 15px rgba(244, 63, 94, 0.15);
         }
 
         /* Narasi Soal Bagian 1 */
@@ -164,14 +179,7 @@
             height: auto;
             border-radius: 12px;
             border: 1px solid var(--border-color);
-            margin-bottom: 12px;
             box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-        }
-
-        .image-showcase p {
-            font-size: 13.5px;
-            color: var(--text-muted);
-            margin: 0;
         }
 
         /* Narasi Soal Bagian 2 */
@@ -591,6 +599,14 @@
             color: #38bdf8;
             font-size: 15px;
         }
+
+        .analysis-concept {
+            margin-top: 8px;
+            font-weight: 700;
+            color: #fbbf24;
+            font-size: 14.5px;
+            letter-spacing: 0.3px;
+        }
     </style>
 </head>
 <body>
@@ -617,6 +633,11 @@
     <!-- Garis Pembatas Kuning Terang & Kontras -->
     <div class="section-divider"></div>
 
+    <!-- Narasi Peringatan Baru yang Diperbarui -->
+    <div class="warning-narrative">
+        ⚠️ Awas Jangan Sampai Salah Memposisikan Timbangan Agar Usahamu Tidak Bangkrut!
+    </div>
+
     <!-- Narasi Soal Bagian 1 -->
     <div class="sub-narrative-top">
         Dua pedagang eceran dengan modal masing-masing Rp. 100.000,- membeli pakcoy seberat yang ditunjukkan pada gambar (1) untuk tiap pedagang. Keduanya menjual kembali pakcoy secara eceran untuk tiap timbangan 0,5 kg pakcoy dengan posisi timbangan <strong>Pedagang A</strong> ditunjukkan pada gambar (2) sedangkan <strong>Pedagang B</strong> pada gambar (3).
@@ -625,7 +646,6 @@
     <!-- Single Image Showcase -->
     <div class="image-showcase">
         <img src="gambar.jpg" alt="Ilustrasi Soal Pakcoy & Timbangan" onerror="this.style.display='none'">
-        <p>📷 Pastikan file <strong>gambar.jpg</strong> sudah di-upload ke repository GitHub Anda.</p>
     </div>
 
     <!-- Narasi Soal Bagian 2 -->
@@ -670,7 +690,7 @@
                     <td class="center"><input type="radio" name="q4" value="TS"></td>
                 </tr>
                 <tr>
-                    <td>5. Jika habis terjual, kedua pedagang akan rugi karena harga jualnya terlalu murah</td>
+                    <td>5. Angka yang terukur pada neraca menyatakan gaya berat yang sesungguhnya dari benda yang ditimbang</td>
                     <td class="center"><input type="radio" name="q5" value="S"></td>
                     <td class="center"><input type="radio" name="q5" value="TS"></td>
                 </tr>
@@ -831,10 +851,12 @@
         </div>
 
         <div class="footer-note">
-            <strong>💡 Catatan untuk Guru & Siswa:</strong> 
-            Gunakan panel kontrol di atas untuk mengubah parameter simulasi secara interaktif sesuai kondisi soal!
+            <strong>💡 Note:</strong> Gunakan panel kontrol di atas untuk mengubah parameter simulasi secara interaktif sesuai kondisi soal!
             <div class="analysis-prompt">
                 Ayo lakukan analisis bagaimana angka-angka tersebut dihasilkan! 🔍
+            </div>
+            <div class="analysis-concept">
+                KONSEP APA YANG KAMU GUNAKAN UNTUK MELAKUKAN ANALISIS PERSOALAN INI?
             </div>
         </div>
     </div>
@@ -850,7 +872,6 @@
             content.style.display = 'block';
             btn.innerHTML = '🔼 TUTUP SIMULASI INTERAKTIF';
             btn.style.background = 'linear-gradient(135deg, #475569, #334155)';
-            // Scroll otomatis ke area simulasi saat dibuka
             content.scrollIntoView({ behavior: 'smooth' });
         } else {
             content.style.display = 'none';
@@ -935,14 +956,14 @@
 
     hitungSimulasi();
 
-    // Fungsi Cek Skor Kuis Dinamis & Toleran
+    // Fungsi Cek Skor Kuis Dinamis & Toleran (Menyesuaikan kunci jawaban baru jika diperlukan)
     function cekSkor() {
         const kunci = {
             q1: 'S',  
             q2: 'S',  
             q3: 'TS', 
             q4: 'S',  
-            q5: 'TS'  
+            q5: 'TS' // Ubah nilai kunci sesuai konsep fisika Anda (umumnya pernyataan ini Tidak Setuju / Salah karena neraca miring memberikan nilai ukur yang keliru akibat komponen gaya gravitasi)
         };
 
         let poinBenar = 0;
